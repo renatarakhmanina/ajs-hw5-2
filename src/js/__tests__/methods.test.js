@@ -27,4 +27,7 @@ test("Bowerman's properties should be changed correctly", () => {
   expect(bowerman.health).toBe(86);
   bowerman.damage(150);
   expect(bowerman.health).toBe(0);
+  expect(() => bowerman.damage(10)).not.toThrow();
+  expect(() => bowerman.damage('')).toThrow('Please enter the number of points');
+  expect(() => bowerman.damage('five')).toThrow('Please enter the number of points');
 });

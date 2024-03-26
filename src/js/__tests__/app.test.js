@@ -47,6 +47,8 @@ test('Character class should have correct properties', () => {
   expect(() => new Character('I', 'Warrior')).toThrow('Name length should be between 2 and 10 characters');
   expect(() => new Character('Daenerys Stormborn of House Targaryen', 'Warrior')).toThrow('Name length should be between 2 and 10 characters');
   expect(() => new Character('Loki', 'Warrior')).not.toThrow();
+  expect(() => new Character(907789, '')).toThrow('Name and type must have string values');
+  expect(() => new Character('milo')).toThrow('Name and type must have string values');
 });
 
 test('Bowerman class should have correct properties', () => {

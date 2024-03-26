@@ -3,6 +3,10 @@ export default class Character {
     if (name.length < 2 || name.length > 10) {
       throw new Error('Name length should be between 2 and 10 characters');
     }
+
+    if (!name || !type || typeof name !== 'string' || typeof type !== 'string') {
+      throw new Error('Name and type must have string values');
+    }
     
     this.name = name;
     this.type = type;
@@ -26,9 +30,13 @@ export default class Character {
   }
 
   damage(points) {
-    this.health -= points * (1 - this.defence / 100);
-    if (this.health < 0) {
-      this.health = 0;
+    if (points && typeof points === 'number') {
+      this.health -= points * (1 - this.defence / 100);
+      if (this.health < 0) {
+        this.health = 0;
+      }
+    } else {
+      throw new Error('Please enter the number of points');
     }
   }
 }
